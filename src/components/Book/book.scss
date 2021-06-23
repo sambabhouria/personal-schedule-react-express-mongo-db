@@ -1,0 +1,113 @@
+.book .content {
+    padding-top: 50px;
+  
+    .filters{
+      position: fixed;
+      bottom: -2px;
+      width: 100vw;
+      height: 50px;
+      z-index: 1050;
+  
+      ul {
+        background: $grey-dark;
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+  
+        li {
+          flex: 1;
+          text-align: center;
+  
+          a {
+            display: block;
+            color: #fff;
+            padding: 1em;
+            text-decoration: none;
+  
+          }
+  
+          &:hover {
+            background-color: $blue;
+          }
+        }
+      }
+    }
+  
+    .room-list {
+      padding: 20px 5px;
+  
+      .room {
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+        position: relative;
+        margin-bottom: 15px;
+  
+        background : {
+          color: #fff;
+          position: center top;
+          repeat: no-repeat;
+        }
+  
+        .header {
+          color: #fff;
+          height: 150px;
+          display: block;
+          position: relative;
+          background: {
+            repeat: no-repeat;
+            size: cover;
+            position: center;
+            blend-mode: luminosity;
+          }
+  
+          &:before {
+            content: '';
+            left: 0;
+            right: 0;
+            position: absolute;
+            height: inherit;
+            background: linear-gradient(to right, rgba(127,142,138,0.3) 0%, rgba(100,165,210,0.7) 100%);
+          }
+  
+          span {
+            font: {
+              family: $font-main;
+              size: 2rem;
+              weight: 900;
+            }
+            text: {
+              transform: uppercase;
+              shadow: 1px 1px #000;
+            }
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+  
+        .info {
+          padding: 15px;
+  
+          .title {
+            font: {
+              family: $font-secondary;
+              weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /*
+    .book .content {
+      padding-top: 100px;
+      .filters {
+        top: 50px;
+      }
+    }*/
+  
+  }

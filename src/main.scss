@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+@import "./partials/_variables.scss";
+@import "./partials/_mixins.scss";
+@import "./partials/_buttons.scss";
+
+@import "./components/Book/book";
+@import "./components/Look/look";
+@import "./components/Pick/pick";
+@import "./components/Forms/form";
+
+body {
+  font {
+    family: $font-secondary;
+    size: 16px;
+  }
+  background-color: #f3f3f3;
+}
+
+.fof {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+
+  background: {
+    blend-mode: multiply;
+    color: rgba(0, 0, 0, 0.4);
+    image: url('https://media.tenor.co/images/6335c6626d00511ed701c10e514c0931/tenor.gif');
+    position: center center;
+    repeat: no-repeat;
+    size: cover;
+  }
+
+  color: #fff;
+  font: {
+    family: monospace;
+    size: 50px;
+  }
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  color: #2aa7d5;
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}

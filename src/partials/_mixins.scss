@@ -1,0 +1,95 @@
+//
+// Mixins
+// ---------------
+
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+    -moz-animation:    $animation;
+    -ms-animation:     $animation;
+    -o-animation:      $animation;
+    animation:         $animation;
+  }
+  
+  @mixin transform($transforms) {
+         -moz-transform: $transforms;
+           -o-transform: $transforms;
+          -ms-transform: $transforms;
+      -webkit-transform: $transforms;
+            transform: $transforms;
+  }
+  
+  @mixin transform-origin($origin) {
+      moz-transform-origin: $origin;
+       -o-transform-origin: $origin;
+      -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+          transform-origin: $origin;
+  }
+  
+  @mixin transition($transition...) {
+      -moz-transition:    $transition;
+      -o-transition:      $transition;
+      -webkit-transition: $transition;
+      transition:         $transition;
+  }
+  
+  @mixin blur($blur...) {
+      -webkit-filter: blur($blur);
+      -moz-filter: blur($blur);
+      -o-filter: blur($blur);
+      -ms-filter: blur($blur);
+      filter: blur($blur);
+  }
+  
+  @mixin font-setting($size, $color, $transform: none){
+    font: {
+      size: $size;
+    }
+    color: $color;
+    text-transform: $transform;
+  };
+  
+  @mixin block-setting($position: relative, $color: #fff) {
+    position: $position;
+    background-color: $color;
+  };
+  
+  @mixin form-style($bgi, $bgc, $color){
+    &:before {
+      background-image: $bgi;
+      background-color: $bgc;
+    }
+  
+    .popup {
+      .header { background: $color; }
+  
+      input.btn[type="submit"] {
+        @include color-button($color);
+      }
+  
+      .content {
+        .form-group {
+          .label-control  {
+            &:after { border-color: $color; }
+          }
+          &.active {
+            .label-text { color: $color !important; }
+          }
+        }
+      }
+    }
+  };
+  
+  @mixin color-button($color){
+    border: 2px solid;
+    background-color: #fff;
+  
+    color: $color;
+    background-color: transparent;
+    border-color: $color;
+  
+    &:active:focus, &:active:hover, &:active, &:hover {
+      background-color: $color;
+      color: #fff;
+    }
+  };

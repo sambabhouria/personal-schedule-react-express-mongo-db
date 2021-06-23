@@ -1,0 +1,337 @@
+.login, .signup {
+
+    &:before {
+      content: "";
+      left: 0;
+      right: 0;
+      height: 100vh;
+      position: fixed;
+      background: {
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+        blend-mode: luminosity;
+      }
+      @include blur(7px);
+    }
+  
+  }
+  
+  .login, .book, .look {
+    @include form-style(url('https://s3.eu-west-2.amazonaws.com/book-room-platform/login.jpg'), rgba(42, 167, 213, 0.5), $blue);
+  }
+  
+  .signup {
+    @include form-style(url('https://s3.eu-west-2.amazonaws.com/book-room-platform/signup.jpg'), rgba(82, 209, 164, 0.5), $green);
+  }
+  
+  .bookform {
+    z-index: 1200;
+    position: fixed;
+    display: none;
+    top: 0;
+    width: 100vw;
+  
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1040;
+      background: rgba(14,43,63,0.9);
+    }
+  
+    .popup {
+      max-height: 100%;
+      position: fixed;
+    }
+  
+    &.opened { display: block; }
+  }
+  
+  .popup {
+    font-family: $font-main;
+    background: #fff;
+    width: 380px;
+    position: absolute;
+    left: 50%;
+    margin-left: -190px;
+    box-shadow: 0 3px 6px 0px rgba(0,0,0,0.16), 0 3px 6px 0px rgba(0,0,0,0.23);
+    z-index: 1200;
+    margin-top: 10vh;
+  
+    .header {
+      color: #fff;
+      font-size: 34px;
+      font-weight: normal;
+      padding: 30px 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  
+    .content {
+      overflow: hidden;
+      position: relative;
+      padding: 40px;
+      background-color: #fff;
+  
+      p {
+        font-size: 16px;
+        text-align: center;
+        margin: 10px 0;
+      }
+  
+      .error-msg {
+        color: $red;
+      }
+  
+      abbr[title]{
+        text-decoration: none;
+      }
+  
+      .inputs-group {
+        display: flex;
+        justify-content: space-between;
+      }
+  
+  
+      .form-group {
+        margin-bottom: 15px;
+        position: relative;
+  
+        .label-control {
+          color: #888;
+          display: block;
+          font-size: 16px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0;
+          width: 100%;
+          pointer-events: none;
+          height: 100%;
+  
+          .label-text {
+            text-transform: capitalize;
+            position: absolute;
+  
+            @include transform(translate3d(0, 30px, 0) scale(1));
+            @include transform-origin(top left);
+            @include transition(0.3s);
+  
+            i {
+              color: red;
+              padding-left: 5px;
+            }
+          }
+  
+          &:before, &:after{
+            content: "";
+            left: 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+          }
+  
+          &:before{
+            border-bottom: 1px solid $grey-light;
+            @include transition(transform 0.3s);
+          }
+  
+          &:after {
+            border-bottom: 2px solid;
+            @include transform(translate3d(-100%, 0, 0));
+            @include transition(transform 0.3s);
+          }
+        }
+  
+        .form-control {
+          outline: none;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          margin-top: 20px;
+          padding: 12px 0;
+          width: 100%;
+          font-size: 16px;
+  
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
+        }
+  
+        .filter {
+          position: relative;
+  
+          .dropdown-menu {
+            max-height: 160px;
+            overflow-y: auto;
+            min-width: auto !important;
+          }
+  
+          .dropdown-menu li {
+            &:hover { cursor: pointer; }
+          }
+        }
+  
+        &.textinput {
+          overflow: hidden;
+          width: 100%;
+        }
+  
+        &.active {
+          .label-control {
+            &:after {
+              @include transform(translate3d(0%, 0, 0));
+            }
+  
+            .label-text {
+              opacity: 1;
+              @include transform(scale(0.9));
+            }
+          }
+        }
+      }
+  
+      .error {
+        .active {
+          .label-control {
+            &:after {
+              border-bottom: 2px solid $red;
+            }
+            .label-text {
+              color: $red !important;
+            }
+          }
+        }
+      }
+  
+      .success {
+        input.btn[type="submit"] {
+            background-color: $green;
+            border-color: $green;
+            color: #fff;
+  
+            &:hover:not([disabled]) {
+              background-color: $green;
+              color: #fff;
+            }
+        }
+      }
+    }
+  
+    .input-field label:before{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid $grey-light;
+      @include transition(transform 0.3s);
+    }
+  
+  }
+  
+  .DayPicker {width: 100%;}
+  
+  .close {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+  
+    &:hover {
+      opacity: 1;
+    }
+  
+    &:before, &:after {
+      position: absolute;
+      content: ' ';
+      height: 20px;
+      width: 2px;
+      background-color: #fff;
+    }
+  
+    &:before { transform: rotate(45deg); }
+    &:after { transform: rotate(-45deg); }
+  }
+  
+  @media (max-width: 500px) {
+    .popup {
+      width: 100%;
+      margin-left: -50%;
+      overflow-y: scroll;
+  
+      .content {
+        padding: 20px;
+      }
+    }
+  
+    .bookform {
+      .popup {
+        margin-top: 0;
+      }
+    }
+  }
+  
+  //
+  // Success animation
+  // ---------------
+  
+  
+  $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
+  
+  .checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: $green;
+    fill: none;
+    animation: stroke .6s $curve forwards;
+  }
+  
+  .checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px $green;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  }
+  
+  .checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke .3s $curve .8s forwards;
+  }
+  
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes scale {
+    0%, 100% {
+      transform: none;
+    }
+    50% {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+  }
+  
+  @keyframes fill {
+    100% {
+      box-shadow: inset 0px 0px 0px 30px $green;
+    }
+  }

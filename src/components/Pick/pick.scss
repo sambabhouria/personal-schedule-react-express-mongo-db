@@ -1,0 +1,58 @@
+.pick {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  #book, #look {
+    color: #fff;
+    text-align: center;
+  
+    flex: 1;
+    -webkit-transition: flex 0.2s ease-in;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+  
+    &:hover, &:focus {
+      flex: 2;
+      -webkit-transition: flex 0.2s ease-out;
+      text-decoration: none;
+    }
+  
+    .text {
+      @include animation(fadein 2s);
+      display: inline-block;
+      font-size: 28px;
+  
+      .heading {
+        font-size: 56px;
+        display: block;
+  
+      }
+    }
+  }
+  
+  #book {
+    background-color: $green;
+  }
+  
+  #look {
+    background-color: $blue;
+  }
+  
+  @media (max-width: 768px) {
+    .pick { flex-direction: column;}
+  }
+  
+  @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+  }
+  
+  @keyframes fadeout {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+  }

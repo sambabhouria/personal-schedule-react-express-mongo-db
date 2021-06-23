@@ -1,0 +1,107 @@
+.wrap {
+
+    &.scrolled {
+  
+      .timeline-header {
+        position: fixed;
+        top: 50px;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+      }
+  
+      .timeline-body {
+        padding-top: 104px;
+      }
+    }
+  
+  }
+  
+  .room-photo {
+    position: fixed;
+    left: 0;
+    top: 0;
+  
+    width: 100vw;
+    min-height: 200px;
+  
+    background: {
+      repeat: no-repeat;
+      size: cover;
+      position: center;
+      blend-mode: luminosity;
+    }
+  
+    &:before {
+      content: '';
+      left: 0;
+      right: 0;
+      position: absolute;
+      height: 100%;
+      background: linear-gradient(to right, rgba(127,142,138,0.3) 0%, rgba(100,165,210,0.7) 100%);
+    }
+  
+    &.personal {
+      background-image: url('https://s3.eu-west-2.amazonaws.com/book-room-platform/personal.jpg');
+    }
+  }
+  
+  .timeline {
+    margin-top: 200px;
+  
+    @include block-setting();
+  
+    p { @include font-setting(18px, $grey-dark); }
+  
+    .timeline-header {
+      width: 100vw;
+      z-index: 5;
+      padding-bottom: 15px;
+  
+      @include block-setting();
+  
+      .title { @include font-setting(36px, $black); }
+    }
+  
+    .timeline-body {
+      @include block-setting($color: #f3f3f3);
+      padding-top: 20px;
+  
+      .meeting {
+        margin: 25px 0px;
+        padding: 20px;
+  
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  
+        @include block-setting();
+  
+        &.available {
+          border-top: 2px solid $green;
+          transition: border-top 0.5s ease-out;
+  
+          .attend {
+            color: $green;
+          }
+        }
+  
+        &.occupied {
+          border-top: 2px solid $red;
+          transition: border-top 0.5s ease-out;
+        }
+  
+        p { @include font-setting(16px, $grey-dark); }
+  
+        .title { @include font-setting(26px, $black); }
+  
+        .time {
+          float: right;
+          @include font-setting(16px, $grey-dark);
+        }
+  
+        .attend {
+          margin-top: 15px;
+          @include font-setting(18px, $red);
+  
+          &:hover { text-decoration: none; cursor: pointer;}
+        }
+      }
+    }
+  }
